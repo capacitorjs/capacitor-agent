@@ -1,0 +1,28 @@
+{
+  "name": "capacitor-agent",
+  "version": "0.0.0",
+  "description": "An agent for communicating with the capacitor devtools",
+  "main": "lib/capacitor-agent.js",
+  "scripts": {
+    "test": "gulp test",
+    "ci-test": "gulp dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/capacitorjs/capacitor-agent.git"
+  },
+  "keywords": [],
+  "author": "Christian Maher",
+  "bugs": {
+    "url": "https://github.com/capacitorjs/capacitor-agent/issues"
+  },
+  "homepage": "https://github.com/capacitorjs/capacitor-agent#readme",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "babel-eslint": "^4.0.10",
+    "capacitor-eslintrc": "git+https://github.com/capacitorjs/eslintrc.git#v1.1.1",
+    "eslint": "^1.2.1",
+    "gulp": "^3.9.0",
+    "gulp-capacitorjs-common": "git+https://github.com/capacitorjs/gulp-capacitorjs-common.git#v0.1.6"
+  }
+}
