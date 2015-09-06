@@ -54,9 +54,14 @@
 	agent.startDevtools('/example-plugin.js');
 	
 	document.getElementById('inc').addEventListener('click', function () {
-	  agent.emit('inc');
+	  agent.emit('plugin:inc');
 	});
-
+	
+	var count = 0;
+	agent.on('agent:inc', function () {
+	  count += 1;
+	  document.getElementById('counter').innerHTML = count;
+	});
 
 /***/ },
 /* 1 */
