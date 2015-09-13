@@ -7,7 +7,7 @@ const capacitorReady = new Promise(function (resolve) {
     resolve(window.__capacitor);
   } else {
     const listener = function (event) {
-      var message = event.data;
+      const message = event.data;
       if (
         event.source !== window
         || typeof message !== 'object'
@@ -31,7 +31,7 @@ export default class CapacitorAgent {
     ['on', 'once', 'removeListener', 'removeAllListeners'].forEach((key) => {
       this[key] = (...args) => {
         this.emitter[key](...args);
-      }
+      };
     });
     this.agentReady = new Promise((resolve) => {
       this.resolveAgentReady = resolve;
