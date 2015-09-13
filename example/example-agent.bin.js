@@ -49,9 +49,13 @@
 	var CapacitorAgent = __webpack_require__(1);
 	
 	var agent = new CapacitorAgent({
-	  channelName: 'github.com/capacitorjs/capacitor:example'
+	  displayName: 'capacitor-example',
+	  channelName: 'github.com/capacitorjs/capacitor-agent/example'
 	});
-	agent.startDevtools('/example-plugin.js');
+	
+	window.start = function () {
+	  agent.startDevtools('/example-plugin.bin.js');
+	};
 	
 	document.getElementById('inc').addEventListener('click', function () {
 	  agent.emit('plugin:inc');
@@ -157,12 +161,14 @@
 		  function CapacitorAgent(_ref) {
 		    var _this = this;
 		
+		    var displayName = _ref.displayName;
 		    var channelName = _ref.channelName;
 		    var _ref$enabled = _ref.enabled;
 		    var enabled = _ref$enabled === undefined ? true : _ref$enabled;
 		
 		    _classCallCheck(this, CapacitorAgent);
 		
+		    this.displayName = displayName;
 		    this.channelName = channelName;
 		    this.enabled = enabled;
 		    this.emitter = new _events.EventEmitter();
@@ -186,7 +192,7 @@
 		      var _this2 = this;
 		
 		      capacitorReady.then(function (capacitor) {
-		        return capacitor.registerPlugin(_this2, _this2.channelName, sourceFile);
+		        return capacitor.registerPlugin(_this2, _this2.displayName, _this2.channelName, sourceFile);
 		      }).then(function () {
 		        _this2.emitter.once('plugin:ready', function () {
 		          _this2.resolveAgentReady();

@@ -24,7 +24,8 @@ const capacitorReady = new Promise(function (resolve) {
 });
 
 export default class CapacitorAgent {
-  constructor({channelName, enabled = true}) {
+  constructor({displayName, channelName, enabled = true}) {
+    this.displayName = displayName;
     this.channelName = channelName;
     this.enabled = enabled;
     this.emitter = new EventEmitter();
@@ -42,7 +43,7 @@ export default class CapacitorAgent {
 
   startDevtools(sourceFile) {
     capacitorReady.then((capacitor) => {
-      return capacitor.registerPlugin(this, this.channelName, sourceFile);
+      return capacitor.registerPlugin(this, this.displayName, this.channelName, sourceFile);
     }).then(() => {
       this.emitter.once('plugin:ready', () => {
         this.resolveAgentReady();

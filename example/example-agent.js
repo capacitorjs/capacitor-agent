@@ -3,9 +3,13 @@
 var CapacitorAgent = require('../lib/capacitor-agent');
 
 var agent = new CapacitorAgent({
-  channelName: 'github.com/capacitorjs/capacitor:example'
+  displayName: 'capacitor-example',
+  channelName: 'github.com/capacitorjs/capacitor-agent/example'
 });
-agent.startDevtools('/example-plugin.js');
+
+window.start = function () {
+  agent.startDevtools('/example-plugin.bin.js');
+};
 
 document.getElementById('inc').addEventListener('click', function () {
   agent.emit('plugin:inc');

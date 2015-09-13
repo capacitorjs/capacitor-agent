@@ -21,6 +21,7 @@
   "devDependencies": {
     "babel-eslint": "^4.0.10",
     "capacitor-eslintrc": "git+https://github.com/capacitorjs/eslintrc.git#v1.1.1",
+    "capacitor-devtools-helpers": "git+https://github.com/capacitorjs/devtools-helpers.git",
     "eslint": "^1.2.1",
     "gulp": "^3.9.0",
     "gulp-capacitorjs-common": "git+https://github.com/capacitorjs/gulp-capacitorjs-common.git#v0.1.6"
