@@ -24,16 +24,13 @@ const capacitorReady = new Promise(function (resolve) {
 });
 
 export default class CapacitorAgent {
-  constructor({displayName, channelName, enabled = true}) {
+  constructor({displayName, channelName}) {
     this.displayName = displayName;
     this.channelName = channelName;
-    this.enabled = enabled;
     this.emitter = new EventEmitter();
     ['on', 'once', 'removeListener', 'removeAllListeners'].forEach((key) => {
       this[key] = (...args) => {
-        if (this.enabled) {
-          this.emitter[key](...args);
-        }
+        this.emitter[key](...args);
       }
     });
     this.agentReady = new Promise((resolve) => {
@@ -52,11 +49,9 @@ export default class CapacitorAgent {
   }
 
   emit(event, payload) {
-    if (this.enabled) {
-      this.agentReady.then(() => {
-        this.emitter.emit('tunnel:plugin', event, payload);
-      });
-    }
+    this.agentReady.then(() => {
+      this.emitter.emit('tunnel:plugin', event, payload);
+    });
     return this;
   }
 }

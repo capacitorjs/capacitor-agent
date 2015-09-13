@@ -1,6 +1,6 @@
 {
   "name": "capacitor-agent",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "An agent for communicating with the capacitor devtools",
   "main": "lib/capacitor-agent.js",
   "scripts": {
