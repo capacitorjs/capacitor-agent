@@ -1,0 +1,1 @@
+webpack --devtool sourcemap --output-filename example-plugin.bin.js example-plugin.js

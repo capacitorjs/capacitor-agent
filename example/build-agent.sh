@@ -1,0 +1,1 @@
+webpack --devtool sourcemap --output-filename example-agent.bin.js example-agent.js

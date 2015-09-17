@@ -53,9 +53,7 @@
 	  channelName: 'github.com/capacitorjs/capacitor-agent/example'
 	});
 	
-	window.start = function () {
-	  agent.startDevtools('/example-plugin.bin.js');
-	};
+	agent.startDevtools('/example-plugin.bin.js');
 	
 	document.getElementById('inc').addEventListener('click', function () {
 	  agent.emit('plugin:inc');
@@ -163,22 +161,17 @@
 		
 		    var displayName = _ref.displayName;
 		    var channelName = _ref.channelName;
-		    var _ref$enabled = _ref.enabled;
-		    var enabled = _ref$enabled === undefined ? true : _ref$enabled;
 		
 		    _classCallCheck(this, CapacitorAgent);
 		
 		    this.displayName = displayName;
 		    this.channelName = channelName;
-		    this.enabled = enabled;
 		    this.emitter = new _events.EventEmitter();
 		    ['on', 'once', 'removeListener', 'removeAllListeners'].forEach(function (key) {
 		      _this[key] = function () {
-		        if (_this.enabled) {
-		          var _emitter;
+		        var _emitter;
 		
-		          (_emitter = _this.emitter)[key].apply(_emitter, arguments);
-		        }
+		        (_emitter = _this.emitter)[key].apply(_emitter, arguments);
 		      };
 		    });
 		    this.agentReady = new Promise(function (resolve) {
@@ -204,11 +197,9 @@
 		    value: function emit(event, payload) {
 		      var _this3 = this;
 		
-		      if (this.enabled) {
-		        this.agentReady.then(function () {
-		          _this3.emitter.emit('tunnel:plugin', event, payload);
-		        });
-		      }
+		      this.agentReady.then(function () {
+		        _this3.emitter.emit('tunnel:plugin', event, payload);
+		      });
 		      return this;
 		    }
 		  }]);

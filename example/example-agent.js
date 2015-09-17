@@ -7,9 +7,7 @@ var agent = new CapacitorAgent({
   channelName: 'github.com/capacitorjs/capacitor-agent/example'
 });
 
-window.start = function () {
-  agent.startDevtools('/example-plugin.bin.js');
-};
+agent.startDevtools('/example-plugin.bin.js');
 
 document.getElementById('inc').addEventListener('click', function () {
   agent.emit('plugin:inc');
